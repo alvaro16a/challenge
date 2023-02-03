@@ -1,22 +1,14 @@
-package co.com.sofka.challenge.persistence.entity;
-
-import jakarta.persistence.*;
+package co.com.sofka.challenge.domain.dto;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Entity
-@Table(name = "buys")
-public class Buy {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_buy")
+public class BuyDTO {
     private Integer idBuy;
     private LocalDateTime date;
     private String idType;
     private String clientName;
-    @OneToMany(mappedBy = "buy", cascade = {CascadeType.ALL})
-    private List<BuyProduct> products;
+    private List<BuyProductDTO> products;
 
     public Integer getIdBuy() {
         return idBuy;
@@ -50,11 +42,11 @@ public class Buy {
         this.clientName = clientName;
     }
 
-    public List<BuyProduct> getProducts() {
+    public List<BuyProductDTO> getProducts() {
         return products;
     }
 
-    public void setProducts(List<BuyProduct> products) {
+    public void setProducts(List<BuyProductDTO> products) {
         this.products = products;
     }
 }

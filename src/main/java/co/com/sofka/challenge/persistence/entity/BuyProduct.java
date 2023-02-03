@@ -7,9 +7,10 @@ import jakarta.persistence.*;
 public class BuyProduct {
     @EmbeddedId
     private BuyProductPK id;
-    private Integer cantidad;
+    private Integer quantity;
 
     @ManyToOne
+    @MapsId("idBuy")
     @JoinColumn(name = "id_buy", insertable = false, updatable = false)
     private Buy buy;
 
@@ -25,22 +26,12 @@ public class BuyProduct {
         this.id = id;
     }
 
-    public Integer getCantidad() {
-        return cantidad;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
-    }
-
-
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public Buy getBuy() {
@@ -51,5 +42,11 @@ public class BuyProduct {
         this.buy = buy;
     }
 
+    public Product getProduct() {
+        return product;
+    }
 
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 }
